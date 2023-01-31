@@ -5,11 +5,18 @@ import file_functions
 
 
 def test_print_file(capfd):
-    with TempDirectory() as tempdir:
-        temp_file = 'test.text'
-        test_line = b'Hello'
-        tempdir.write(temp_file, test_line)
-        file_path = tempdir.path + '\\' + temp_file
+    """Testing the extract file content function, testing: for successful reads and missing files"""
+    # Testing for a successful read by using tempDirectory to create a file and read the contents
+    with TempDirectory() as tempDir:
+        temp_filename = "testFile"
+        test_line = b'This is a test file for extract msg file content function.'
+        tempDir.write(temp_filename, test_line)
+        file_path = tempDir.path + '/' + temp_filename
         file_functions.print_file(file_path)
     out, err = capfd.readouterr()
-    assert out == 'HELLO\n'
+    assert out == "This is a test file for extract msg file content function.\n"
+    # Testing for a missing file by passing a file that does not exist
+    missing_file = 'missing_file.txt'
+    with pytest.raises(FileNotFoundError) as file_error:
+        file_functions.print_file(missing_file)
+    assert file_error.type is FileNotFoundError
