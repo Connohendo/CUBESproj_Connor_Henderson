@@ -37,6 +37,7 @@ jobs:
     - name: Install testfixtures
       run: | 
         pip install testfixtures
+        pip install requests
     - name: Test with pytest
       run: |
         pytest
