@@ -1,9 +1,10 @@
+from file_functions import fileCreation
 
 
-def print_hi(name):
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+def main():
+    # Call file creation in file_functions.py
+    fileCreation()
 
 
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
+    main()
