@@ -1,5 +1,5 @@
 import pytest
-from testfixtures import TempDirectory
+import testfixtures
 
 import file_functions
 
@@ -7,7 +7,7 @@ import file_functions
 def test_print_file(capfd):
     """Testing the extract file content function, testing: for successful reads and missing files"""
     # Testing for a successful read by using tempDirectory to create a file and read the contents
-    with TempDirectory() as tempDir:
+    with testfixtures.TempDirectory() as tempDir:
         temp_filename = "testFile"
         test_line = b'This is a test file for extract msg file content function.'
         tempDir.write(temp_filename, test_line)
