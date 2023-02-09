@@ -46,7 +46,7 @@ def create_table():
                    # email
                    item.get('Field10', ''),
                    # website
-                   item.get('Field9', ''),
+                   item.get('Field9', None),
                    # phone number
                    item.get('Field12', ''),
                    # Time period
