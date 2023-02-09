@@ -99,4 +99,3 @@ def insert_db(data):
         if db_connection:
             db_connection.close()
             print('Database connection closed.')
-
