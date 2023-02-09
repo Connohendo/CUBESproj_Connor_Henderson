@@ -24,7 +24,7 @@ jobs:
       env:
         API_KEY: ${{ secrets.WUFOO_KEY }}
       run: |
-        echo 'secret_key = "'$API_KEY'"' >> secrets.py
+        echo 'wufoo_key = "'$API_KEY'"' >> secrets.py
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -38,4 +38,4 @@ jobs:
         flake8 . --count  --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        python -m pytest tests/
+        python -m pytest tests/*.py
