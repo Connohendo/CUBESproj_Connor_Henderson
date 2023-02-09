@@ -38,7 +38,7 @@ jobs:
       env:
         API_KEY:${{secret.wufoo_key}}
       run: |
-        echo 'wufoo_key = "'$API_KEY'"' >> secrets.py
+        echo 'wufoo_key = "'$API_KEY'"' >> secret.py
     - name: Test with pytest
       run: |
         python -m pytest tests/*
