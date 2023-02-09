@@ -16,4 +16,3 @@ def get_wufoo_data() -> dict:
         sys.exit(-1)
     jsonresponse = response.json()
     return jsonresponse['Entries']
-
