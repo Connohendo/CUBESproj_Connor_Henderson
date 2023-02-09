@@ -2,6 +2,7 @@ import db_functions
 import api_functions
 
 
+# Very modular main function wow
 def main():
     data = api_functions.get_wufoo_data()
     db_functions.database_creation('wufoo_db.db', 'entries')

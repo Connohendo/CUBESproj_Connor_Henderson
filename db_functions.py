@@ -1,6 +1,7 @@
 import sqlite3
 
 
+# Create a new database
 def database_creation(database, table):
     try:
         # create a database connection
@@ -40,6 +41,7 @@ def database_creation(database, table):
             print('Database connection closed.')
 
 
+# insert data from the api call into the database after first clearing any data left over
 def insert_db(database, table, data):
     try:
         db_connection = sqlite3.connect(f'{database}')
