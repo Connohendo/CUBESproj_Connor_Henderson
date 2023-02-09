@@ -95,6 +95,7 @@ def insert_db(data):
     # 'finally' blocks are useful when behavior in the try/except blocks is not predictable
     # The 'finally' block will run regardless of what happens in the try/except blocks.
     finally:
+        db_connection.commit()
         # close the database connection whether an error happened or not (if a connection exists)
         if db_connection:
             db_connection.close()

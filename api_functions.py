@@ -15,7 +15,5 @@ def get_wufoo_data() -> dict:
         print(f"Failed to get data, response code:{response.status_code} and error message: {response.reason} ")
         sys.exit(-1)
     jsonresponse = response.json()
-    print(jsonresponse['Entries'])
     return jsonresponse['Entries']
 
-# each dictionary represents a json object
