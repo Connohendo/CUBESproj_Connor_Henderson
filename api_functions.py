@@ -1,8 +1,6 @@
 import sys
-
 import requests
 from requests.auth import HTTPBasicAuth
-
 from secret import wufoo_key
 
 

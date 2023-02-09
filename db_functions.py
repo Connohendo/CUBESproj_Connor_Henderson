@@ -1,31 +1,14 @@
-import sys
-import requests
 import sqlite3
-from secret import wufoo_key
-from requests.auth import HTTPBasicAuth
+import api_functions
 
 
-# def main():
-
-def get_wufoo_data() -> dict:  # comment to test workflow
-    url = "https://chendro.wufoo.com/api/v3/forms/zk890sm1gnzlxu/entries/json"
-    response = requests.get(url, auth=HTTPBasicAuth(wufoo_key, 'pass'))
-
-    if response.status_code != 200:
-        print(f"Failed to get data, response code: {response.status_code} and error message: {response.reason}")
-        sys.exit(-1)
-
-    jsonresponse = response.json()
-    return jsonresponse['Entries']
-
-
-def write_wufoo_data():
+def create_table():
     # create a database connection
-    conn = sqlite3.connect('wufoo_db.db')
-    cursor = conn.cursor()
+    conn = sqlite3.connect('wufoo_data.db')
+    c = conn.cursor()
 
     # create the table if it doesn't already exist
-    cursor.execute('''CREATE TABLE IF NOT EXISTS entries
+    c.execute('''CREATE TABLE IF NOT EXISTS entries
                  (Entry_Id text,
                   Title text,
                   First_Name text,
@@ -44,12 +27,12 @@ def write_wufoo_data():
                   Updated_By text)''')
 
     # retrieve the data from Wufoo
-    data = get_wufoo_data()
+    data = api_functions.get_wufoo_data()
 
     # insert the data into the table
     for item in data:
-        cursor.execute("INSERT INTO entries VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-                  (item['EntryId'],
+        c.execute("INSERT INTO entries VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+                  (item[0],
                    # title
                    item.get('Field5', ''),
                    # first name
@@ -89,8 +72,3 @@ def write_wufoo_data():
     # commit the changes to the database and close the connection
     conn.commit()
     conn.close()
-
-
-if __name__ == "__main__":
-    #main()
-    write_wufoo_data()
