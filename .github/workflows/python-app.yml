@@ -36,7 +36,7 @@ jobs:
         flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
     - name: Build Secrets
       env:
-        API_KEY:${{secrets.wufoo_key}}
+        API_KEY:${{secrets.WUFOO_KEY}}
       run: |
         echo 'wufoo_key = "'$API_KEY'"' >> secrets.py
     - name: Test with pytest
