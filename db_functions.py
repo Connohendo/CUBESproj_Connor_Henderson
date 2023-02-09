@@ -1,14 +1,14 @@
 import sqlite3
 
 
-def database_creation():
+def database_creation(database, table):
     try:
         # create a database connection
-        db_connection = sqlite3.connect('wufoo_db.db')
+        db_connection = sqlite3.connect(f'{database}')
         db_cursor = db_connection.cursor()
 
         # create the table if it doesn't already exist
-        db_cursor.execute('''CREATE TABLE IF NOT EXISTS entries
+        db_cursor.execute(f'''CREATE TABLE IF NOT EXISTS {table}
                      (Entry_Id text,
                       title text,
                       First_name text,
@@ -40,15 +40,15 @@ def database_creation():
             print('Database connection closed.')
 
 
-def insert_db(data):
+def insert_db(database, table, data):
     try:
-        db_connection = sqlite3.connect('wufoo_db.db')
+        db_connection = sqlite3.connect(f'{database}')
         db_cursor = db_connection.cursor()
 
-        db_cursor.execute('DELETE FROM entries')
+        db_cursor.execute(f'DELETE FROM {table}')
 
         for item in data:
-            db_cursor.execute("INSERT INTO entries VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            db_cursor.execute(f"INSERT INTO {table} VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                               (item['EntryId'],
                                # title
                                item.get('Field5', ''),
