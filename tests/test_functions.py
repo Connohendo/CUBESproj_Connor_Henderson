@@ -1,6 +1,6 @@
 import sqlite3
-import api_functions
-import db_functions
+from api import api_functions
+from database import db_functions
 
 
 # test that the api call is properly getting data from wuffo
@@ -9,7 +9,7 @@ def test_api_data_received():
     assert len(data) == 10
 
 
-# test that the databse functions are properly creating databases/tables and filling them with test data properly
+# test that the database functions are properly creating databases/tables and filling them with test data properly
 def test_database():
     db_connection = sqlite3.connect('pytest_db.db')
     db_cursor = db_connection.cursor()

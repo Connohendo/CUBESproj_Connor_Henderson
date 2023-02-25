@@ -1,4 +1,4 @@
-from api_functions import get_wufoo_data
+from api.api_functions import get_wufoo_data
 
 
 # Optional print function for testing

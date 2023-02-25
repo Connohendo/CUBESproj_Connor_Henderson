@@ -102,3 +102,14 @@ def insert_db(database, table, data):
         if db_connection:
             db_connection.close()
             print('Database connection closed.')
+
+
+def print_db():
+    db_connection = sqlite3.connect('wufoo_db.db')
+    db_cursor = db_connection.cursor()
+
+    db_cursor.execute('SELECT * FROM entries')
+    rows = db_cursor.fetchall()
+
+    for row in rows:
+        print(row)
