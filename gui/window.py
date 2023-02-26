@@ -22,9 +22,9 @@ class Comp490DemoWindow(QWidget):
         quit_button.clicked.connect(QApplication.instance().quit)
         quit_button.resize(quit_button.sizeHint())
         quit_button.move(300, 400)
-        comp490_demo_button = QPushButton("Push me for Demo", self)
-        comp490_demo_button.move(100, 400)
-        comp490_demo_button.clicked.connect(self.do_something_to_demo)
+        # comp490_demo_button = QPushButton("Push me for Demo", self)
+        # comp490_demo_button.move(100, 400)
+        # comp490_demo_button.clicked.connect(self.do_something_to_demo)
         self.show()
 
     def put_data_in_list(self, data: list[dict]):
@@ -36,12 +36,13 @@ class Comp490DemoWindow(QWidget):
                            f"\t\t{item['Permissions']}\t\t{item['Opportunities']}\t\t{item['Date_created']}" \
                            f"\t\t{item['Created_by']}\t\t{item['Date_updated']}\t\t{item['Updated_by']}"
             list_item = QListWidgetItem(display_text, listview=self.list_control)
+            list_item
 
-    def do_something_to_demo(self):
-        message_box = QMessageBox(self)
-        message_box.setText("You just pushed the button - imagine database work here")
-        message_box.setWindowTitle("Comp490 Demo")
-        message_box.show()
+    # def do_something_to_demo(self):
+    #     message_box = QMessageBox(self)
+    #     message_box.setText("You just pushed the button - imagine database work here")
+    #     message_box.setWindowTitle("Comp490 Demo")
+    #     message_box.show()
 
     def find_full_data_record(self, entryid: str):
         for info in self.data:
