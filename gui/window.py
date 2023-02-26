@@ -1,4 +1,5 @@
-from PySide6.QtWidgets import QWidget, QPushButton, QListWidget, QApplication, QListWidgetItem, QMessageBox
+from PySide6.QtWidgets import QWidget, QPushButton, QListWidget, QApplication, QListWidgetItem
+
 from gui import secondwindow
 
 
