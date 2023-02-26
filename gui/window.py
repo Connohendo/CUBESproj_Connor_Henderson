@@ -11,7 +11,7 @@ class Comp490DemoWindow(QWidget):
         self.data_window = None
 
     def setup_window(self):
-        self.setWindowTitle("GUI Demo for Capstone")
+        self.setWindowTitle("CUBES Submissions")
         display_list = QListWidget(self)
         self.list_control = display_list
         self.put_data_in_list(self.data)
@@ -43,16 +43,15 @@ class Comp490DemoWindow(QWidget):
         message_box.setWindowTitle("Comp490 Demo")
         message_box.show()
 
-    def find_full_data_record(self, entryid:str):
+    def find_full_data_record(self, entryid: str):
         for info in self.data:
             if info["EntryId"] == entryid:
                 return info
 
-    def demo_list_item_selected(self, current:QListWidgetItem, previous:QListWidgetItem):
+    def demo_list_item_selected(self, current: QListWidgetItem, previous: QListWidgetItem):
         selected_data = current.data(0)  # the data function has a 'role' choose 0 unless you extended QListWidgetItem
         state_name = selected_data.split("\t")[0]  # split on tab and take the first resulting entry
         full_record = self.find_full_data_record(state_name)
         print(full_record)
         self.data_window = secondwindow.Comp490DataDemoWindow(full_record)
         self.data_window.show()
-
