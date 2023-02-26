@@ -1,10 +1,11 @@
 Connor Henderson
 
-The project grabs the entries to a wufoo form via an api call
+Sprint 3 Review
 
-the github actions need to be tweaked and the unit tests are pretty nonexistent currently
+I have finished the GUI despite it being atrocious to look at. The tests only test the api call and database functions. 
+I was unsure how to test the GUI. The actions work as well. 
 
+Functionality
 
-tests are finished 
-
-This project uses an API call to grab the responses to a wufoo form and submit them into a database
+This project uses an API call to grab the responses to a wufoo form and submit them into a database. We Then get a GUI
+that lists the submissions and is clickable for  nicer view within a second window.
