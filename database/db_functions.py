@@ -47,9 +47,13 @@ def insert_db(database, table, data):
         db_connection = sqlite3.connect(f'{database}')
         db_cursor = db_connection.cursor()
 
-        db_cursor.execute(f'DELETE FROM {table}')
-
         for item in data:
+            # check if entry already exists in table
+            db_cursor.execute("SELECT Entry_Id FROM entries WHERE Entry_Id = ?", (item['EntryId'],))
+            result = db_cursor.fetchone()
+            if result is not None:
+                continue
+
             db_cursor.execute(f"INSERT INTO {table} VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                               (item['EntryId'],
                                # title
@@ -69,7 +73,7 @@ def insert_db(database, table, data):
                                # phone number
                                item.get('Field12', ''),
                                # Time period
-                               ', '.join([item.get('Field213', ''),
+                               ' '.join([item.get('Field213', ''),
                                           item.get('Field214', ''),
                                           item.get('Field215', ''),
                                           item.get('Field216', ''),
@@ -77,7 +81,7 @@ def insert_db(database, table, data):
                                # perms
                                item.get('Field313', ''),
                                # opportunities
-                               ', '.join([item.get('Field113', ''), item.get('Field114', ''), item.get('Field115', ''),
+                               ' '.join([item.get('Field113', ''), item.get('Field114', ''), item.get('Field115', ''),
                                           item.get('Field116', ''), item.get('Field117', ''), item.get('Field118', ''),
                                           item.get('Field119', '')]),
                                # created
