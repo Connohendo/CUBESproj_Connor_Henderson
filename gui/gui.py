@@ -253,7 +253,7 @@ class Gui(tkinter.Frame):
 
             add_entry_window.destroy()
 
-            app.grab_entries()
+            main.app.grab_entries()
 
         save_btn = tkinter.Button(add_entry_window, text="Save", command=save_entry)
         save_btn.grid(row=len(fields) + 1, column=0, columnspan=2)
