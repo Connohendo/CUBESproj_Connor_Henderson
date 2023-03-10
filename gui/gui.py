@@ -226,8 +226,6 @@ class Gui(tkinter.Frame):
             perms = self.new_entries[8].get().strip()
             opportunity = self.new_entries[9].get().strip()
 
-            full_name = f"{title} {f_name} {l_name}"
-
             db_connection = sqlite3.connect('wufoo_db.db')
             db_cursor = db_connection.cursor()
 
