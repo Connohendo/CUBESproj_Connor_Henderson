@@ -17,7 +17,7 @@ class Gui(tkinter.Frame):
         self.grab_btn.pack(side=tkinter.LEFT)
         self.update_btn = tkinter.Button(self.button_frame, text="Update Entry", command=self.update_window)
         self.update_btn.pack(side=tkinter.LEFT)
-        self.add_use_btn = tkinter.Button(self.button_frame, text="Add Entry", command=self.new_user)
+        self.add_use_btn = tkinter.Button(self.button_frame, text="Add Entry", command=self.new_entry)
         self.add_use_btn.pack(side=tkinter.LEFT)
         self.paned_window = tkinter.PanedWindow(self.master, orient=tkinter.VERTICAL)
         self.paned_window.pack(fill=tkinter.BOTH, expand=1)
@@ -159,9 +159,9 @@ class Gui(tkinter.Frame):
                       "Organization Website", "Phone Number", "Time Period", "Permission", "Opportunities"]
             for i, field in enumerate(fields):
                 entry_value = tkinter.StringVar(value=data[i + 2])
-                app.new_user_entries[i].config(textvariable=entry_value)
+                app.new_entries[i].config(textvariable=entry_value)
 
-    def new_user(self):
+    def new_entry(self):
         add_entry_window = tkinter.Toplevel(self.master)
         add_entry_window.title("Add Entry")
 
@@ -175,7 +175,7 @@ class Gui(tkinter.Frame):
 
         fields = ["Title", "First Name", "Last Name", "Organization Title", "Organization", "Organization Website",
                   "Phone Number", "Time Period", "Permission", "Opportunities"]
-        self.new_user_entries = []
+        self.new_entries = []
         for i, field in enumerate(fields):
             label = tkinter.Label(add_entry_window, text=field)
             label.grid(row=i + 1, column=0, sticky="e")
@@ -184,20 +184,20 @@ class Gui(tkinter.Frame):
             entry = tkinter.Entry(add_entry_window, textvariable=entry_value)
             entry.grid(row=i + 1, column=1, sticky="w")
 
-            self.new_user_entries.append(entry)
+            self.new_entries.append(entry)
 
-        def save_user():
+        def save_entry():
             email = email_entry.get().strip()
-            title = self.new_user_entries[0].get().strip()
-            f_name = self.new_user_entries[1].get().strip()
-            l_name = self.new_user_entries[2].get().strip()
-            org_title = self.new_user_entries[3].get().strip()
-            org = self.new_user_entries[4].get().strip()
-            org_website = self.new_user_entries[5].get().strip()
-            p_num = self.new_user_entries[6].get().strip()
-            time_period = self.new_user_entries[7].get().strip()
-            perms = self.new_user_entries[8].get().strip()
-            opportunity = self.new_user_entries[9].get().strip()
+            title = self.new_entries[0].get().strip()
+            f_name = self.new_entries[1].get().strip()
+            l_name = self.new_entries[2].get().strip()
+            org_title = self.new_entries[3].get().strip()
+            org = self.new_entries[4].get().strip()
+            org_website = self.new_entries[5].get().strip()
+            p_num = self.new_entries[6].get().strip()
+            time_period = self.new_entries[7].get().strip()
+            perms = self.new_entries[8].get().strip()
+            opportunity = self.new_entries[9].get().strip()
 
             full_name = f"{title} {f_name} {l_name}"
 
@@ -228,5 +228,5 @@ class Gui(tkinter.Frame):
 
             app.load_data()
 
-        save_btn = tkinter.Button(add_entry_window, text="Save", command=save_user)
+        save_btn = tkinter.Button(add_entry_window, text="Save", command=save_entry)
         save_btn.grid(row=len(fields) + 1, column=0, columnspan=2)
