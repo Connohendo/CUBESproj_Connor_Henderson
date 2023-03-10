@@ -36,24 +36,24 @@ class Gui(tkinter.Frame):
         var4 = tkinter.IntVar()
         var5 = tkinter.IntVar()
         var6 = tkinter.IntVar()
-        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity1', variable=var1, onvalue=1,
-        #                                     offvalue=0)
-        # self.paned_window.add(self.checkbox)
-        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity2', variable=var2, onvalue=1,
-        #                                     offvalue=0)
-        # self.paned_window.add(self.checkbox)
-        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity3', variable=var3, onvalue=1,
-        #                                     offvalue=0)
-        # self.paned_window.add(self.checkbox)
-        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity4', variable=var4, onvalue=1,
-        #                                     offvalue=0)
-        # self.paned_window.add(self.checkbox)
-        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity5', variable=var5, onvalue=1,
-        #                                     offvalue=0)
-        # self.paned_window.add(self.checkbox)
-        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity6', variable=var6, onvalue=1,
-        #                                     offvalue=0)
-        # self.paned_window.add(self.checkbox)
+        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity1', variable=var1, onvalue=1,
+                                            offvalue=0)
+        self.paned_window.add(self.checkbox)
+        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity2', variable=var2, onvalue=1,
+                                            offvalue=0)
+        self.paned_window.add(self.checkbox)
+        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity3', variable=var3, onvalue=1,
+                                            offvalue=0)
+        self.paned_window.add(self.checkbox)
+        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity4', variable=var4, onvalue=1,
+                                            offvalue=0)
+        self.paned_window.add(self.checkbox)
+        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity5', variable=var5, onvalue=1,
+                                            offvalue=0)
+        self.paned_window.add(self.checkbox)
+        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity6', variable=var6, onvalue=1,
+                                            offvalue=0)
+        self.paned_window.add(self.checkbox)
         self.labels = []
         fields = ["Title", "First Name", "Last Name", "Organization Title", "Organization", "Email",
                   "Organization Website",
