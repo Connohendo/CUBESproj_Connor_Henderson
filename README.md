@@ -2,7 +2,7 @@ Connor Henderson
 
 Sprint 4 Review
 
-gui works doesnt have auto fill doesnt have checkboxes working but theyre there didnt get to test im exhasuted its 5am
+gui works  doesnt have checkboxes working but theyre there didnt get to test im exhasuted its 5am
 
 Functionality
 
