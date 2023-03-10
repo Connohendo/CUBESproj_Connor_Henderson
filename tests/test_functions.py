@@ -57,10 +57,10 @@ def test_database():
          'testers@aol.com',
          'wetest.com',
          '8000337357',
-         'Summer 2022, , , , Other',
+         'Summer 2022    Other',
          'Yes',
-         'Course Project, Guest Speaker, Site Visit, Job Shadow, Internships, Career '
-         'Panel, Networking Event',
+         'Course Project Guest Speaker Site Visit Job Shadow Internships Career Panel '
+         'Networking Event',
          'right now',
          'testers',
          'today',

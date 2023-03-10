@@ -47,11 +47,11 @@ def insert_db(database, table, data):
         db_connection = sqlite3.connect(f'{database}')
         db_cursor = db_connection.cursor()
 
-        if database == 'pytest_db.db':
-            db_cursor.execute('DELETE FROM pytest_db.db')
+        # if database == 'pytest_db.db':
+        #     db_cursor.execute('DELETE FROM pytest_db.db')
         for item in data:
             # check if entry already exists in table
-            db_cursor.execute("SELECT Entry_Id FROM entries WHERE Entry_Id = ?", (item['EntryId'],))
+            db_cursor.execute(f"SELECT Entry_Id FROM {table} WHERE Entry_Id = ?", (item['EntryId'],))
             result = db_cursor.fetchone()
             if result is not None:
                 continue
