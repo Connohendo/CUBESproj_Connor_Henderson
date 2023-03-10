@@ -11,13 +11,13 @@ class Gui(tkinter.Frame):
         self.setup_window()
 
     def setup_window(self):
-        self.button_frame = tkinter.Frame(self.master)
-        self.button_frame.pack(fill='x')
-        self.grab_btn = tkinter.Button(self.button_frame, text="Grab Entries", command=self.grab_entries)
+        self.btn_frame = tkinter.Frame(self.master)
+        self.btn_frame.pack(fill='x')
+        self.grab_btn = tkinter.Button(self.btn_frame, text="Grab Entries", command=self.grab_entries)
         self.grab_btn.pack(side=tkinter.LEFT)
-        self.update_btn = tkinter.Button(self.button_frame, text="Update Entry", command=self.update_window)
+        self.update_btn = tkinter.Button(self.btn_frame, text="Update Entry", command=self.update_window)
         self.update_btn.pack(side=tkinter.LEFT)
-        self.add_use_btn = tkinter.Button(self.button_frame, text="Add Entry", command=self.new_entry)
+        self.add_use_btn = tkinter.Button(self.btn_frame, text="Add Entry", command=self.new_entry)
         self.add_use_btn.pack(side=tkinter.LEFT)
         self.paned_window = tkinter.PanedWindow(self.master, orient=tkinter.VERTICAL)
         self.paned_window.pack(fill=tkinter.BOTH, expand=1)
