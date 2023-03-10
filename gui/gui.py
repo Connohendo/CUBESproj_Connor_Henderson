@@ -1,6 +1,10 @@
 import sqlite3
 import tkinter
 
+import main
+
+query = "SELECT * FROM entries WHERE Title || ' ' || First_Name || ' ' || Last_Name = ?"
+
 
 class Gui(tkinter.Frame):
 
@@ -32,18 +36,24 @@ class Gui(tkinter.Frame):
         var4 = tkinter.IntVar()
         var5 = tkinter.IntVar()
         var6 = tkinter.IntVar()
-        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity1', variable=var1, onvalue=1, offvalue=0)
-        self.paned_window.add(self.checkbox)
-        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity2', variable=var2, onvalue=1, offvalue=0)
-        self.paned_window.add(self.checkbox)
-        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity3', variable=var3, onvalue=1, offvalue=0)
-        self.paned_window.add(self.checkbox)
-        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity4', variable=var4, onvalue=1, offvalue=0)
-        self.paned_window.add(self.checkbox)
-        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity5', variable=var5, onvalue=1, offvalue=0)
-        self.paned_window.add(self.checkbox)
-        self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity6', variable=var6, onvalue=1, offvalue=0)
-        self.paned_window.add(self.checkbox)
+        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity1', variable=var1, onvalue=1,
+        #                                     offvalue=0)
+        # self.paned_window.add(self.checkbox)
+        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity2', variable=var2, onvalue=1,
+        #                                     offvalue=0)
+        # self.paned_window.add(self.checkbox)
+        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity3', variable=var3, onvalue=1,
+        #                                     offvalue=0)
+        # self.paned_window.add(self.checkbox)
+        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity4', variable=var4, onvalue=1,
+        #                                     offvalue=0)
+        # self.paned_window.add(self.checkbox)
+        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity5', variable=var5, onvalue=1,
+        #                                     offvalue=0)
+        # self.paned_window.add(self.checkbox)
+        # self.checkbox = tkinter.Checkbutton(self.paned_window, text='Opportunity6', variable=var6, onvalue=1,
+        #                                     offvalue=0)
+        # self.paned_window.add(self.checkbox)
         self.labels = []
         fields = ["Title", "First Name", "Last Name", "Organization Title", "Organization", "Email",
                   "Organization Website",
@@ -83,8 +93,7 @@ class Gui(tkinter.Frame):
 
             db_connection = sqlite3.connect('wufoo_db.db')
             db_cursor = db_connection.cursor()
-            db_cursor.execute("SELECT * FROM entries WHERE Title || ' ' || First_Name || ' ' || Last_Name = ?",
-                              (entry,))
+            db_cursor.execute(query, (entry,))
             data = db_cursor.fetchone()
             db_connection.close()
 
@@ -101,7 +110,7 @@ class Gui(tkinter.Frame):
 
         db_connection = sqlite3.connect('wufoo_db.db')
         db_cursor = db_connection.cursor()
-        db_cursor.execute("SELECT * FROM entries WHERE Title || ' ' || First_Name || ' ' || Last_Name = ?", (entry,))
+        db_cursor.execute(query, (entry,))
         data = db_cursor.fetchone()
         db_connection.close()
 
@@ -177,7 +186,7 @@ class Gui(tkinter.Frame):
                       "Organization Website", "Phone Number", "Time Period", "Permission", "Opportunities"]
             for i, field in enumerate(fields):
                 entry_value = tkinter.StringVar(value=data[i + 2])
-                app.new_entries[i].config(textvariable=entry_value)
+                main.app.new_entries[i].config(textvariable=entry_value)
 
     def new_entry(self):
         add_entry_window = tkinter.Toplevel(self.master)
@@ -219,7 +228,7 @@ class Gui(tkinter.Frame):
 
             full_name = f"{title} {f_name} {l_name}"
 
-            db_connection = sqlite3.connect('wufoo_db')
+            db_connection = sqlite3.connect('wufoo_db.db')
             db_cursor = db_connection.cursor()
 
             db_cursor.execute("SELECT * FROM entries WHERE email = ?", (email,))
@@ -244,7 +253,7 @@ class Gui(tkinter.Frame):
 
             add_entry_window.destroy()
 
-            app.load_data()
+            app.grab_entries()
 
         save_btn = tkinter.Button(add_entry_window, text="Save", command=save_entry)
         save_btn.grid(row=len(fields) + 1, column=0, columnspan=2)
